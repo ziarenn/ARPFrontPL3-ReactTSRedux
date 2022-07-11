@@ -59,9 +59,11 @@ const Navbar = () => {
               </Button>
             </Link>
           </Box>
-          <Button variant="contained" sx={{ bgcolor: "#FC766AFF" }}>
-            Log in
-          </Button>
+          <Link to="/login" style={{ textDecoration: "none" }}>
+            <Button variant="contained" sx={{ bgcolor: "#FC766AFF" }}>
+              Log in
+            </Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </Box>

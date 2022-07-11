@@ -7,8 +7,9 @@ import {
   Grid,
   Button,
 } from "@mui/material";
-import {SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { Inputs } from "../../../helpers/types";
+import { Link } from "react-router-dom";
 const LoginPage = () => {
   const {
     register,
@@ -74,12 +75,19 @@ const LoginPage = () => {
       >
         No account yet? Register for free now!
       </Typography>
-      <Button
-        variant="contained"
-        sx={{ display: "block", mx: "auto", mb: ".3rem", bgcolor: "#FC766AFF" }}
-      >
-        Register
-      </Button>
+      <Link to="/register" style={{ textDecoration: "none" }}>
+        <Button
+          variant="contained"
+          sx={{
+            display: "block",
+            mx: "auto",
+            mb: ".3rem",
+            bgcolor: "#FC766AFF",
+          }}
+        >
+          Register
+        </Button>
+      </Link>
     </Card>
   );
 };

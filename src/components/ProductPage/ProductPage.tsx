@@ -3,9 +3,7 @@ import axios from "axios";
 import { Product } from "../../helpers/interfaces";
 import { Typography, Card, Paper } from "@mui/material";
 import ProductTile from "../ProductTile/ProductTile";
-const ElectronicsPage: React.FC<{ category: string; id: string }> = ({
-  category,
-}) => {
+const ElectronicsPage: React.FC<{ category: string }> = ({ category }) => {
   const [products, setProducts] = useState<Product[]>();
 
   useEffect(() => {
