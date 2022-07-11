@@ -4,47 +4,60 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ backgroundColor: "orange" }}>
         <Toolbar>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", sm: "block", fontWeight: 500 },
-            }}
-          >
-            SDA MARKET
-          </Typography>
+          <Link to="/" style={{ textDecoration: "none", flexGrow: 1 }}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{
+                color: "white",
+              }}
+            >
+              SDA MARKET
+            </Typography>
+          </Link>
           <Box sx={{ display: "block", mr: "500px" }}>
-            <Button
-              variant="contained"
-              sx={{ backgroundColor: "#FC766AFF", mx: ".5rem" }}
+            <Link
+              to="/electronics"
+              style={{ textDecoration: "none", color: "white" }}
             >
-              ELECTRONICS
-            </Button>
-            <Button
-              variant="contained"
-              sx={{ backgroundColor: "#FC766AFF", mx: ".5rem" }}
-            >
-              JEWELERY
-            </Button>
-            <Button
-              variant="contained"
-              sx={{ backgroundColor: "#FC766AFF", mx: ".5rem" }}
-            >
-              MEN'S CLOTHING
-            </Button>
-            <Button
-              variant="contained"
-              sx={{ backgroundColor: "#FC766AFF", mx: ".5rem" }}
-            >
-              WOMEN'S CLOTHING
-            </Button>
+              <Button
+                variant="contained"
+                sx={{ backgroundColor: "#FC766AFF", mx: ".5rem" }}
+              >
+                ELECTRONICS
+              </Button>
+            </Link>
+            <Link to="/jewelery" style={{ textDecoration: "none" }}>
+              <Button
+                variant="contained"
+                sx={{ backgroundColor: "#FC766AFF", mx: ".5rem" }}
+              >
+                JEWELERY
+              </Button>
+            </Link>
+            <Link to="/mans" style={{ textDecoration: "none" }}>
+              <Button
+                variant="contained"
+                sx={{ backgroundColor: "#FC766AFF", mx: ".5rem" }}
+              >
+                MEN'S CLOTHING
+              </Button>
+            </Link>
+            <Link to="/womans" style={{ textDecoration: "none" }}>
+              <Button
+                variant="contained"
+                sx={{ backgroundColor: "#FC766AFF", mx: ".5rem" }}
+              >
+                WOMEN'S CLOTHING
+              </Button>
+            </Link>
           </Box>
           <Button variant="contained" sx={{ bgcolor: "#FC766AFF" }}>
             Log in

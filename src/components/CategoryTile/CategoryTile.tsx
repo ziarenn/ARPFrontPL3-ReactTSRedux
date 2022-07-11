@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CategoryTileProps } from "../../helpers/interfaces";
 import { Card, Typography, Box } from "@mui/material";
 import axios from "axios";
-import { AddBoxSharp } from "@mui/icons-material";
+
 const CategoryTile = ({ category }: CategoryTileProps) => {
   const [image, setImage] = useState("");
   useEffect(() => {
