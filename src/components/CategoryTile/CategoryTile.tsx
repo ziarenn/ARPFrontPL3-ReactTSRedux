@@ -9,7 +9,6 @@ const CategoryTile = ({ category }: CategoryTileProps) => {
     axios
       .get(`https://fakestoreapi.com/products/category/${category}?limit=1`)
       .then((response) => {
-        console.log(response.data[0].image);
         setImage(response.data[0].image);
       });
   }, []);
