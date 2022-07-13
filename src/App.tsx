@@ -7,6 +7,7 @@ import LoginPage from "./components/Login/LoginPage/LoginPage";
 import RegisterPage from "./components/Login/RegisterPage/RegisterPage";
 import { auth } from "./helpers/firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
+import CartPage from "./components/CartPage/CartPage";
 function App() {
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
 
@@ -40,6 +41,7 @@ function App() {
             path="/womans"
             element={<ProductPage category="women's clothing" />}
           />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
         </Routes>

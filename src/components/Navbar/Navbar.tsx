@@ -6,7 +6,17 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import { NavbarProps } from "../../helpers/interfaces";
-const Navbar: React.FC<NavbarProps> = ({loggedIn}) => {
+import { auth } from "../../helpers/firebaseConfig";
+import { signOut } from "firebase/auth";
+const Navbar: React.FC<NavbarProps> = ({ loggedIn }) => {
+  const buttonClickHandler = () => {
+    if (loggedIn) {
+      signOut(auth).then(() => {
+        console.log("Signed out successfully");
+      });
+    }
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ backgroundColor: "orange" }}>
@@ -60,9 +70,21 @@ const Navbar: React.FC<NavbarProps> = ({loggedIn}) => {
               </Button>
             </Link>
           </Box>
+          <Link to="/cart" style={{ textDecoration: "none" }}>
+            <Button
+              variant="contained"
+              sx={{ bgcolor: "#FC766AFF", mr: "0.1rem" }}
+            >
+              Cart
+            </Button>
+          </Link>
           <Link to="/login" style={{ textDecoration: "none" }}>
-            <Button variant="contained" sx={{ bgcolor: "#FC766AFF" }}>
-              {loggedIn ? 'Logged in': 'Log in'}
+            <Button
+              variant="contained"
+              sx={{ bgcolor: "#FC766AFF" }}
+              onClick={buttonClickHandler}
+            >
+              {loggedIn ? "Log out" : "Log in"}
             </Button>
           </Link>
         </Toolbar>
