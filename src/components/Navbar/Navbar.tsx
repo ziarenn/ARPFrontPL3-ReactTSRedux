@@ -5,7 +5,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-const Navbar = () => {
+import { NavbarProps } from "../../helpers/interfaces";
+const Navbar: React.FC<NavbarProps> = ({loggedIn}) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ backgroundColor: "orange" }}>
@@ -61,7 +62,7 @@ const Navbar = () => {
           </Box>
           <Link to="/login" style={{ textDecoration: "none" }}>
             <Button variant="contained" sx={{ bgcolor: "#FC766AFF" }}>
-              Log in
+              {loggedIn ? 'Logged in': 'Log in'}
             </Button>
           </Link>
         </Toolbar>

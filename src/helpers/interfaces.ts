@@ -16,3 +16,7 @@ export interface Product {
   rating: Rating;
   title: string;
 }
+
+export interface NavbarProps {
+  loggedIn: boolean;
+}
