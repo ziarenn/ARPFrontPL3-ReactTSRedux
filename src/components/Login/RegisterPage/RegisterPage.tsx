@@ -9,6 +9,8 @@ import {
 } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Inputs } from "../../../helpers/types";
+import { auth } from "../../../helpers/firebaseConfig";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 const RegisterPage = () => {
   const {
     register,
@@ -23,8 +25,17 @@ const RegisterPage = () => {
     email: string;
     password1: string;
     password2: string;
-  }> = (data) => {
-    console.log(data);
+  }> = ({ email, password1, password2 }) => {
+    if (password1 === password2) {
+      // sign up
+      createUserWithEmailAndPassword(auth, email, password1)
+        .then((creds) => {
+          console.log("User logged in, creds: ", creds);
+        })
+        .catch((err) => console.log(err.message));
+    } else {
+      console.log("Passwords not equal");
+    }
   };
   return (
     <>
