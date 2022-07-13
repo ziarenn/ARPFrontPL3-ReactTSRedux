@@ -10,6 +10,8 @@ import {
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Inputs } from "../../../helpers/types";
 import { Link } from "react-router-dom";
+import { auth } from "../../../helpers/firebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
 const LoginPage = () => {
   const {
     register,
@@ -17,8 +19,15 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const submitHandler: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
+  const submitHandler: SubmitHandler<Inputs> = ({ email, password }) => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((creds) => {
+        console.log("Successfully logged in, creds: ", creds);
+      })
+      .catch((err) => {
+        console.log("Logging in failed");
+        console.log(err.message);
+      });
   };
 
   return (
