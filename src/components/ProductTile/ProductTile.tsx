@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import { Card, Box, Typography, Paper, Button } from "@mui/material";
 import { Product } from "../../helpers/interfaces";
+import { useDispatch } from "react-redux";
 const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
   const [clicked, setClicked] = useState<boolean>(false);
+  const dispatch = useDispatch();
+  const dispatchAddToCart = () => {
+    dispatch({ type: "SET_PRODUCTS", payload: product });
+  };
 
   return (
     <>
@@ -38,7 +43,11 @@ const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
           <Typography paragraph sx={{ fontSize: "1rem" }}>
             {product.description}
           </Typography>
-          <Button variant="contained" sx={{ bgcolor: "#FC766AFF" }}>
+          <Button
+            variant="contained"
+            sx={{ bgcolor: "#FC766AFF" }}
+            onClick={dispatchAddToCart}
+          >
             Add to cart
           </Button>
         </Card>
