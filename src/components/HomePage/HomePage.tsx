@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Paper, Typography, Box } from "@mui/material";
-import CategoryTile from "../CategoryTile/CategoryTile";
+import {  Typography } from "@mui/material";
 import axios from "axios";
-import iphone from "../../iphone.webp";
-import rolex from "../../rolex.webp";
 import Bestsellers from "../Bestsellers/Bestsellers";
 import CategoryMenu from "../CategoryMenu/CategoryMenu";
 const HomePage = () => {

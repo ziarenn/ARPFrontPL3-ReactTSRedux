@@ -1,9 +1,15 @@
 import React from "react";
-import { Card, Paper, Typography, Box } from "@mui/material";
+import { Card, Paper, Typography, Box, Button } from "@mui/material";
 import { Product } from "../../helpers/interfaces";
+import { useDispatch } from "react-redux";
+import { removeProduct } from "../../redux/actions/productActions";
 const CartProductTile: React.FC<{ product: Product; key: number }> = ({
   product,
 }) => {
+  const dispatch = useDispatch();
+  const removeProductDispatch = () => {
+    dispatch(removeProduct(product));
+  };
   return (
     <Card
       component={Paper}
@@ -21,6 +27,13 @@ const CartProductTile: React.FC<{ product: Product; key: number }> = ({
       <Typography component="span" sx={{ fontSize: "1rem" }}>
         {product.price}$
       </Typography>
+      <Button
+        variant="contained"
+        sx={{ bgcolor: "red", ml: "2rem" }}
+        onClick={removeProductDispatch}
+      >
+        Remove from cart
+      </Button>
     </Card>
   );
 };

@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { Card, Box, Typography, Paper, Button } from "@mui/material";
 import { Product } from "../../helpers/interfaces";
 import { useDispatch } from "react-redux";
+import { setProduct } from "../../redux/actions/productActions";
 const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
   const [clicked, setClicked] = useState<boolean>(false);
   const dispatch = useDispatch();
   const dispatchAddToCart = () => {
-    dispatch({ type: "SET_PRODUCTS", payload: product });
+    dispatch(setProduct(product));
   };
 
   return (
