@@ -1,10 +1,17 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, applyMiddleware, compose } from "@reduxjs/toolkit";
 import { reducers } from "./reducers/index";
-import thunk from "redux-thunk";
+import { useDispatch } from "react-redux";
+import thunk, { ThunkAction } from "redux-thunk";
+
+
 const store = configureStore({
   reducer: reducers,
-  middleware: [thunk],
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware().concat(thunk)
+  },
   devTools: process.env.NODE_ENV !== "production",
 });
 
+export type AppDispatch = typeof store.dispatch;
+export const useAppDispatch: () => AppDispatch = useDispatch;
 export default store;

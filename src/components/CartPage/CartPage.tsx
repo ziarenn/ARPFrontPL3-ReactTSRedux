@@ -5,7 +5,8 @@ import { Product } from "../../helpers/interfaces";
 import CartProductTile from "../CartProductTile/CartProductTile";
 interface State {
   allProducts: {
-    selectedProducts: Product[];
+    selectedProducts: Product[]| [];
+    fetchedProducts: Product[]| []
   };
 }
 const CartPage = () => {

@@ -1,8 +1,11 @@
 import { ActionTypes } from "../constants/action-types";
 import { Product } from "../../helpers/interfaces";
 import axios from "axios";
-import fakeStoreApi from "../../apis/fakeStoreApi";
-import { Dispatch } from "redux";
+import { ThunkAction } from "redux-thunk";
+import { initialState } from "../reducers/productReducer";
+import { Action, ActionCreator, AnyAction, Dispatch } from "redux";
+import { ThunkDispatch } from "redux-thunk";
+
 export const setProduct = (product: Product) => {
   return {
     type: ActionTypes.SET_PRODUCT,
@@ -17,9 +20,19 @@ export const removeProduct = (product: Product) => {
   };
 };
 
-export const fetchProducts = () => {
-  return async function(dispatch: Dispatch) {
-    const response = await fakeStoreApi.get("/products");
-    dispatch({ type: ActionTypes.FETCH_PRODUCTS, payload: response.data });
+export const fetchProducts = (): ThunkAction<
+  void,
+  initialState,
+  unknown,
+  AnyAction
+> => {
+  return async (dispatch) => {
+    const response = await axios.get(
+      `https://fakestoreapi.com/products?limit=10`
+    );
+    dispatch({
+      type: ActionTypes.FETCH_PRODUCTS,
+      payload: response.data,
+    });
   };
 };
