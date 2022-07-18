@@ -3,7 +3,7 @@ import { CategoryTileProps } from "../../helpers/interfaces";
 import { Card, Typography, Box } from "@mui/material";
 import axios from "axios";
 
-const CategoryTile = ({ category }: CategoryTileProps) => {
+const CategoryTile: React.FC<CategoryTileProps> = ({ category }) => {
   const [image, setImage] = useState("");
   useEffect(() => {
     axios

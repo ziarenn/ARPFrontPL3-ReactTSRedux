@@ -2,9 +2,8 @@ import { ActionTypes } from "../constants/action-types";
 import { Product } from "../../helpers/interfaces";
 import axios from "axios";
 import { ThunkAction } from "redux-thunk";
-import { initialState } from "../reducers/productReducer";
-import { Action, ActionCreator, AnyAction, Dispatch } from "redux";
-import { ThunkDispatch } from "redux-thunk";
+import { initialState } from "../../helpers/interfaces";
+import { AnyAction } from "redux";
 
 export const setProduct = (product: Product) => {
   return {

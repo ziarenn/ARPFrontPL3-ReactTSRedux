@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import {  Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import axios from "axios";
 import Bestsellers from "../Bestsellers/Bestsellers";
 import CategoryMenu from "../CategoryMenu/CategoryMenu";
 const HomePage = () => {
-  const [categories, setCategories] = useState<string[]>();
+  const [categories, setCategories] = useState<string[] | undefined>();
 
   useEffect(() => {
     axios

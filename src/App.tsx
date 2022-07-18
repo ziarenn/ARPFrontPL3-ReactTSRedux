@@ -9,7 +9,7 @@ import { auth } from "./helpers/firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 import CartPage from "./components/CartPage/CartPage";
 function App() {
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -44,6 +44,7 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route>404 Not Found</Route>
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,10 +1,9 @@
 import React from "react";
+import { CategoryMenuProps } from "../../helpers/interfaces";
 import { Paper } from "@mui/material";
 import CategoryTile from "../CategoryTile/CategoryTile";
 import { Link } from "react-router-dom";
-const CategoryMenu: React.FC<{
-  categories: string[];
-}> = ({ categories }) => {
+const CategoryMenu: React.FC<CategoryMenuProps> = ({ categories }) => {
   return (
     <Paper elevation={1} sx={{ my: "2rem" }}>
       {categories.map((el: string, i: number) => {

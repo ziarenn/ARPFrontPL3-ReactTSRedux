@@ -1,12 +1,8 @@
 import { AnyAction } from "redux";
-import { Product } from "../../helpers/interfaces";
 import { ActionTypes } from "../constants/action-types";
-export interface initialState {
-  selectedProducts: Product[] | [];
-  fetchedProducts: Product[] | [];
-}
+import { initialState as IState } from "../../helpers/interfaces";
 
-const initialState: initialState = {
+const initialState: IState = {
   selectedProducts: [],
   fetchedProducts: [],
 };
@@ -30,7 +26,6 @@ export const productReducer = (state = initialState, action: AnyAction) => {
         fetchedProducts: [...state.fetchedProducts],
       };
     case ActionTypes.FETCH_PRODUCTS:
-      console.log("fetch products reducer");
       return {
         selectedProducts: [...state.selectedProducts],
         fetchedProducts: [...action.payload],

@@ -1,25 +1,20 @@
 import { Typography, Button } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
-import { Product } from "../../helpers/interfaces";
+import { Product, State } from "../../helpers/interfaces";
 import CartProductTile from "../CartProductTile/CartProductTile";
-interface State {
-  allProducts: {
-    selectedProducts: Product[]| [];
-    fetchedProducts: Product[]| []
-  };
-}
+
 const CartPage = () => {
   const products = useSelector(
     (state: State) => state.allProducts.selectedProducts
   );
-
-  const total =
-    products.length !== 0
+  const calculateTotal = () => {
+    return products.length !== 0
       ? products
           .map((product: Product) => product.price)
           .reduce((a, b) => a + b)
       : "0";
+  };
 
   return (
     <>
@@ -27,7 +22,7 @@ const CartPage = () => {
         return <CartProductTile product={el} key={i} />;
       })}
       <Typography variant="h2" sx={{ fontSize: "2rem" }} align="center">
-        Total: {total}$
+        Total: {calculateTotal()}$
       </Typography>
       <Button
         variant="contained"

@@ -1,13 +1,12 @@
-import { configureStore, applyMiddleware, compose } from "@reduxjs/toolkit";
-import { reducers } from "./reducers/index";
+import { configureStore } from "@reduxjs/toolkit";
+import { rootReducer } from "./reducers/index";
 import { useDispatch } from "react-redux";
-import thunk, { ThunkAction } from "redux-thunk";
-
+import thunk from "redux-thunk";
 
 const store = configureStore({
-  reducer: reducers,
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware().concat(thunk)
+    return getDefaultMiddleware().concat(thunk);
   },
   devTools: process.env.NODE_ENV !== "production",
 });

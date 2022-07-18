@@ -1,9 +1,9 @@
 import React from "react";
 import { Card, Paper, Typography, Box, Button } from "@mui/material";
-import { Product } from "../../helpers/interfaces";
+import { CartProductTileProps } from "../../helpers/interfaces";
 import { useDispatch } from "react-redux";
 import { removeProduct } from "../../redux/actions/productActions";
-const CartProductTile: React.FC<{ product: Product; key: number }> = ({
+const CartProductTile: React.FC<CartProductTileProps> = ({
   product,
 }) => {
   const dispatch = useDispatch();

@@ -8,7 +8,7 @@ import {
   Grid,
 } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Inputs } from "../../../helpers/types";
+import { RegisterFormInputs } from "../../../helpers/interfaces";
 import { auth } from "../../../helpers/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 const RegisterPage = () => {
@@ -16,16 +16,12 @@ const RegisterPage = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<{
-    email: string;
-    password1: string;
-    password2: string;
-  }>();
-  const submitHandler: SubmitHandler<{
-    email: string;
-    password1: string;
-    password2: string;
-  }> = ({ email, password1, password2 }) => {
+  } = useForm<RegisterFormInputs>();
+  const submitHandler: SubmitHandler<RegisterFormInputs> = ({
+    email,
+    password1,
+    password2,
+  }) => {
     if (password1 === password2) {
       // sign up
       createUserWithEmailAndPassword(auth, email, password1)
