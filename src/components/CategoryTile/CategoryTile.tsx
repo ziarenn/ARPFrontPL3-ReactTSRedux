@@ -1,17 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { CategoryTileProps } from "../../helpers/interfaces";
 import { Card, Typography, Box } from "@mui/material";
-import axios from "axios";
 
-const CategoryTile: React.FC<CategoryTileProps> = ({ category }) => {
-  const [image, setImage] = useState("");
-  useEffect(() => {
-    axios
-      .get(`https://fakestoreapi.com/products/category/${category}?limit=1`)
-      .then((response) => {
-        setImage(response.data[0].image);
-      });
-  }, []);
+const CategoryTile: React.FC<CategoryTileProps> = ({category, image }) => {
   return (
     <Card
       sx={{

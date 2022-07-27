@@ -5,12 +5,23 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-import { NavbarProps } from "../../helpers/interfaces";
 import { auth } from "../../helpers/firebaseConfig";
 import { signOut } from "firebase/auth";
-const Navbar: React.FC<NavbarProps> = ({ loggedIn }) => {
+import { useSelector } from "react-redux";
+
+interface AuthState {
+  authState: boolean;
+}
+
+interface State {
+  authState: AuthState;
+}
+
+const Navbar = () => {
+  const authState = useSelector((state: State) => state.authState.authState);
+  console.log(authState);
   const buttonClickHandler = () => {
-    if (loggedIn) {
+    if (authState) {
       signOut(auth).then(() => {
         console.log("Signed out successfully");
       });
@@ -84,7 +95,7 @@ const Navbar: React.FC<NavbarProps> = ({ loggedIn }) => {
               sx={{ bgcolor: "#FC766AFF" }}
               onClick={buttonClickHandler}
             >
-              {loggedIn ? "Log out" : "Log in"}
+              {authState ? "Log out" : "Log in"}
             </Button>
           </Link>
         </Toolbar>

@@ -3,16 +3,18 @@ import { Typography } from "@mui/material";
 import axios from "axios";
 import Bestsellers from "../Bestsellers/Bestsellers";
 import CategoryMenu from "../CategoryMenu/CategoryMenu";
+import {fetchCategories} from '../../redux/actions/productActions'
+import {useAppDispatch} from '../../redux/store'
+import {ThunkDispatch} from 'redux-thunk'
+import {initialState, State} from '../../helpers/interfaces'
+import {AnyAction} from 'redux'
+import {useSelector} from 'react-redux'
 const HomePage = () => {
-  const [categories, setCategories] = useState<string[] | undefined>();
-
+  const dispatch = useAppDispatch()
+  const categories = useSelector((state: State)=> state.allProducts.fetchedCategories)
+  console.log(categories)
   useEffect(() => {
-    axios
-      .get("https://fakestoreapi.com/products/categories")
-      .then((response) => {
-        setCategories(response.data);
-      })
-      .catch((err) => console.log(err.message));
+    dispatch(fetchCategories() as ThunkDispatch<initialState, unknown, AnyAction>)
   }, []);
 
   return (
@@ -25,7 +27,7 @@ const HomePage = () => {
         Browse and buy your favorite electronics, jewellery and clothes. All in
         one place.
       </Typography>
-      {categories && <CategoryMenu categories={categories} />}
+      {categories.length !== 0 && <CategoryMenu categories={categories} />}
       <Typography
         variant="h3"
         component="h3"

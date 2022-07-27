@@ -8,21 +8,22 @@ import RegisterPage from "./components/Login/RegisterPage/RegisterPage";
 import { auth } from "./helpers/firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 import CartPage from "./components/CartPage/CartPage";
+import { useDispatch } from "react-redux";
+import { setAuthState } from "./redux/actions/authActions";
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-
+  const dispatch = useDispatch();
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      setLoggedIn(true);
+      dispatch(setAuthState(true));
     } else {
-      setLoggedIn(false);
+      dispatch(setAuthState(false));
     }
   });
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar loggedIn={loggedIn} />
+        <Navbar/>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route

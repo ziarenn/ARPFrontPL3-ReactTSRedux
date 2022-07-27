@@ -5,6 +5,8 @@ import { initialState as IState } from "../../helpers/interfaces";
 const initialState: IState = {
   selectedProducts: [],
   fetchedProducts: [],
+  fetchedImages: [],
+  fetchedCategories: []
 };
 
 export const productReducer = (state = initialState, action: AnyAction) => {
@@ -13,6 +15,8 @@ export const productReducer = (state = initialState, action: AnyAction) => {
       return {
         selectedProducts: [...state.selectedProducts, action.payload],
         fetchedProducts: [...state.fetchedProducts],
+        fetchedImages: [...state.fetchedImages],
+        fetchedCategories: [...state.fetchedCategories]
       };
 
     case ActionTypes.REMOVE_PRODUCT:
@@ -24,11 +28,29 @@ export const productReducer = (state = initialState, action: AnyAction) => {
       return {
         selectedProducts: sp,
         fetchedProducts: [...state.fetchedProducts],
+        fetchedImages: [...state.fetchedImages],
+        fetchedCategories: [...state.fetchedCategories]
       };
     case ActionTypes.FETCH_PRODUCTS:
       return {
-        selectedProducts: [...state.selectedProducts],
         fetchedProducts: [...action.payload],
+        fetchedImages: [...state.fetchedImages],
+        selectedProducts: [...state.selectedProducts],
+        fetchedCategories: [...state.fetchedCategories]
+      };
+    case ActionTypes.FETCH_IMAGES:
+      return {
+        fetchedImages: [...action.payload],
+        fetchedProducts: [...state.fetchedProducts],
+        selectedProducts: [...state.selectedProducts],
+        fetchedCategories: [...state.fetchedCategories]
+      };
+    case ActionTypes.FETCH_CATEGORIES:
+      return {
+        fetchedCategories: [...action.payload],
+        fetchedImages: [...state.fetchedImages],
+        fetchedProducts: [...state.fetchedProducts],
+        selectedProducts: [...state.selectedProducts]
       };
     default:
       return state;

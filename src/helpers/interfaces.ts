@@ -1,5 +1,6 @@
 export interface CategoryTileProps {
   category: string;
+  image: string;
 }
 
 interface Rating {
@@ -25,6 +26,8 @@ export interface State {
   allProducts: {
     selectedProducts: Product[] | [];
     fetchedProducts: Product[] | [];
+    fetchedImages: string[] | [];
+    fetchedCategories: string[]|[]
   };
 }
 
@@ -50,4 +53,6 @@ export interface ProductTileProps {
 export interface initialState {
   selectedProducts: Product[] | [];
   fetchedProducts: Product[] | [];
+  fetchedImages: string[] | [];
+  fetchedCategories: string[]| []
 }

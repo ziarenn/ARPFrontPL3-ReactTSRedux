@@ -14,9 +14,10 @@ const Bestsellers = () => {
   const products = useSelector(
     (state: State) => state.allProducts.fetchedProducts
   );
+
   useEffect(() => {
     dispatch(
-      fetchProducts() as ThunkDispatch<initialState, unknown, AnyAction>
+      fetchProducts(10) as ThunkDispatch<initialState, unknown, AnyAction>
     );
   }, []);
 
