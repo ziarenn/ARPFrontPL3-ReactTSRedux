@@ -12,6 +12,7 @@ import { Inputs } from "../../../helpers/types";
 import { Link } from "react-router-dom";
 import { auth } from "../../../helpers/firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
+
 const LoginPage = () => {
   const {
     register,
@@ -29,6 +30,7 @@ const LoginPage = () => {
         console.log(err.message);
       });
   };
+
 
   return (
     <Card

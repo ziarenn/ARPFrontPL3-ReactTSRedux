@@ -21,6 +21,7 @@ const HomePage = () => {
     <>
       <Typography
         variant="h2"
+        id='home-page-h2'
         sx={{ fontSize: "3rem", fontFamily: "Roboto", mt: "2rem" }}
         align="center"
       >

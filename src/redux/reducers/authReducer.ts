@@ -8,7 +8,6 @@ const initialState = {
 export const authReducer = (state = initialState, action: AnyAction) => {
   switch (action.type) {
     case ActionTypes.SET_AUTH_STATE:
-      console.log(state)
       return {
         authState: action.payload,
       };

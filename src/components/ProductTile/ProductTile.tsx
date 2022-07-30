@@ -3,6 +3,13 @@ import { Card, Box, Typography, Paper, Button } from "@mui/material";
 import { ProductTileProps } from "../../helpers/interfaces";
 import { useDispatch } from "react-redux";
 import { setProduct } from "../../redux/actions/productActions";
+export const clickHandler = (
+  state: boolean,
+  setState: React.Dispatch<React.SetStateAction<boolean>>
+) => {
+  setState(!state);
+};
+
 const ProductTile: React.FC<ProductTileProps> = ({ product }) => {
   const [clicked, setClicked] = useState(false);
   const dispatch = useDispatch();
@@ -15,7 +22,7 @@ const ProductTile: React.FC<ProductTileProps> = ({ product }) => {
       <Card
         component={Paper}
         sx={{ maxWidth: "35%", mx: "auto", my: "1rem", p: ".5rem" }}
-        onClick={() => setClicked(!clicked)}
+        onClick={() => clickHandler(clicked, setClicked)}
       >
         <Box
           component="img"

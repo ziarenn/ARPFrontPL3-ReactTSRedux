@@ -21,7 +21,7 @@ const CategoryTile: React.FC<CategoryTileProps> = ({category, image }) => {
       </Typography>
       <Box
         component="img"
-        alt="iphone"
+        alt={category}
         src={image}
         sx={{
           width: "50%",
